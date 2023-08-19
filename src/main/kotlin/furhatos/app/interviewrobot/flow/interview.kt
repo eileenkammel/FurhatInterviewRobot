@@ -143,7 +143,6 @@ val AskAboutInterview: State = state(Interaction) {
     }
 
     onResponse<requestInterviewOptionsAdvice> {
-        users.current.interview.adjoin(it.intent)
         randomizeClarificationRequest()
         furhat.say("${it.intent}")
         users.current.interview.talked_test= true
