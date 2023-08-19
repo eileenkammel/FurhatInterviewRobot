@@ -27,6 +27,22 @@ class ChooseTopicIntent : Intent() {
     }
 }
 
+class RequestTopicOptionsIntent : Intent() {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "What can we talk about?",
+            "What can you talk about?",
+            "What do you know about?",
+            "What topics do you have?",
+            "Which topics can we talk about?",
+            "Which topics can you talk about?",
+            "Which topics do you know about?",
+            "Which topics can you help me with?",
+            "What can you give me advice on?"
+        )
+    }
+}
+
 open class TellCVIntent : Intent(), TextGenerator {
     var degree: Degree? = null
     var formerPositions: Number? = null
@@ -35,8 +51,10 @@ open class TellCVIntent : Intent(), TextGenerator {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "@degree",
-            "@formerPositions",
-            "@yrsOfExperience",
+            "@formerPositions jobs",
+            "@formerPositions positions",
+            "@formerPositions companies",
+            "@yrsOfExperience years",
             "I have a @degree",
             "I have a @degree degree",
             "I have had @formerPositions jobs",
@@ -61,7 +79,7 @@ open class TellCVIntent : Intent(), TextGenerator {
     override fun toText(lang: Language): String {
         return generate(
             lang,
-            "[a $degree][$formerPositions former positions][$yrsOfExperience years of working experience]"
+            "[a $degree degree][have worked in $formerPositions roles][and have $yrsOfExperience years of working experience]"
         )
     }
 
@@ -70,13 +88,60 @@ open class TellCVIntent : Intent(), TextGenerator {
     }
 }
 
+<<<<<<< HEAD
 class InterviewIntent : Intent(), TextGenerator {
     var talked_preparation: Boolean? = false
     var talked_content: Boolean? = false
     var talked_test: Boolean? = false
+=======
+class TellDegreeIntent : Intent() {
+    var degree: Degree? = null
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "I am @confidence"
+            "@degree",
+            "I have a @degree",
+            "I have a @degree degree"
+        )
+    }
+
+}
+
+class TellPositionsIntent : Intent() {
+    var formerPositions: Number? = null
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "@formerPositions",
+            "I have had @formerPositions jobs",
+            "I have held @formerPositions positions",
+            "I have worked for @formerPositions companies",
+            "I have worked in @formerPositions companies"
+        )
+    }
+
+}
+
+class TellExperienceIntent : Intent() {
+    var yrsOfExperience: Number? = null
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "@yrsOfExperience",
+            "I have worked for @yrsOfExperience years",
+            "I have @yrsOfExperience years of experience",
+            "I have @yrsOfExperience years of work experience",
+            "I have @yrsOfExperience years of experience in that field")
+    }
+}
+
+class TellInterviewIntent : Intent(), TextGenerator {
+    var confidence: InterviewConfidence? = null
+>>>>>>> origin/main
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "@confidence",
+            "I am @confidence",
+            "I am @confidence during job interviews",
+            "I feel @confidence",
+            "I feel @confidence during job interviews"
         )
     }
 
@@ -95,6 +160,7 @@ class InterviewIntent : Intent(), TextGenerator {
     }
 }
 
+<<<<<<< HEAD
 class doneWithInterviewAdvice : Intent(){
 
     override fun getExamples(lang: Language): List<String> {
@@ -203,6 +269,18 @@ class requestInterviewOptionsAdvice : Intent(), TextGenerator {
 
 
 
+=======
+class TellInterviewConfidenceIntent : Intent() {
+    var confidence: InterviewConfidence? = null
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("@confidence",
+            "I am @confidence",
+            "I am @confidence during job interviews",
+            "I feel @confidence",
+            "I feel @confidence during job interviews")
+    }
+}
+>>>>>>> origin/main
 class TellSkillIntent : Intent(), TextGenerator {
     var skill: Skill? = null
     override fun getExamples(lang: Language): List<String> {
@@ -222,11 +300,33 @@ class TellSkillIntent : Intent(), TextGenerator {
     }
 }
 
-class RequestCvAdvice : Intent(){
-    var adviceNeed: CvAdviceNeed? = null
+class RequestCVAdvice : Intent() {
+    var cvAdviceNeed: CVAdviceNeed? = null
+
     override fun getExamples(lang: Language): List<String> {
+<<<<<<< HEAD
         return listOf(
             "I need advice on @adviceNeed",
             "@adviceNeed")
+=======
+        return listOf("I need advice on @cvAdviceNeed", "@cvAdviceNeed",
+            "I want to know @CvAdviceNeed")
+    }
+}
+
+class RequestInterviewAdvice : Intent() {
+    var interviewAdviceNeed: InterviewAdviceNeed? = null
+
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("I need advice on @interviewAdviceNeed", "interviewAdviceNeed")
+    }
+}
+
+class RequestSkillsAdvice : Intent() {
+    var skillsAdviceNeed: SkillsAdviceNeed? = null
+
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("I need advice on @skillsAdviceNeed", "skillsAdviceNeed")
+>>>>>>> origin/main
     }
 }

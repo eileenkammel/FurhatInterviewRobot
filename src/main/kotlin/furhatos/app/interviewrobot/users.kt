@@ -16,13 +16,21 @@ val User.cv by NullSafeUserDataDelegate {
 }
 
 val User.cvAdviceNeed by NullSafeUserDataDelegate{
-    RequestCvAdvice()
+    RequestCVAdvice()
 }
 
 val User.interview by NullSafeUserDataDelegate {
     InterviewIntent()
 }
 
+val User.interviewAdviceNeed by NullSafeUserDataDelegate{
+    RequestInterviewAdvice()
+}
+
 val User.skills by NullSafeUserDataDelegate {
     TellSkillIntent()
+}
+
+val User.skillsAdviceNeed by NullSafeUserDataDelegate{
+    RequestSkillsAdvice()
 }

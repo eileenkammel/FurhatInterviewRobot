@@ -25,12 +25,6 @@ val requestClarification: State = state {
                 +"Uh huh"
                 +"I see"
             }
-
-            random {
-                +"You were saying?"
-                +"Please continue"
-                +"Please keep going"
-            }
         }
 
         terminate()
@@ -38,7 +32,7 @@ val requestClarification: State = state {
 }
 
 fun FlowControlRunner.randomizeClarificationRequest() {
-    val probability = 0.20
+    val probability = 0.15
     val randomValue: Double = Random.nextDouble()
     if (randomValue <= probability) {
         call(requestClarification)
