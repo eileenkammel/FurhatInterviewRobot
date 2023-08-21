@@ -20,7 +20,7 @@ val User.cvAdviceNeed by NullSafeUserDataDelegate{
 }
 
 val User.interview by NullSafeUserDataDelegate {
-    TellInterviewIntent()
+    InterviewIntent()
 }
 
 val User.interviewAdviceNeed by NullSafeUserDataDelegate{
