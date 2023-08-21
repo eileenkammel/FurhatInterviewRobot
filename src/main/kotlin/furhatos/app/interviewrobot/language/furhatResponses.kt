@@ -45,14 +45,12 @@ val requestYrsOfExperience = utterance {
     +"How many years of experience do you have in your field? ?"
 }
 
-<<<<<<< HEAD
 
 val introInterview2 = utterance {
     +"I had in mind talking about "
     +"  "
 }
 
-=======
 val askCvQuestion = utterance {
     +"What are your concerns when it comes to writing a CV?"
     +"How many CV's have you written so far?"
@@ -73,7 +71,6 @@ val giveCvStructureAdvice = utterance {
 val givePersonalInterestAdvice = utterance {
     +"Any personal interest you mention should showcase desirable qualities relevant for the job. Certain hobbies show leadership qualities, like being leader of your hobby club. Travelling can signify interest in cultural diversity and show that you fit in well in a multinational company. Whatever you are going to mention, think about how it translates to qualities relevant to the job."
 }
->>>>>>> origin/main
 
 val requestInterviewExperience = utterance {
     +"Tell me about your experience with job interviews and what exactly you need help with."

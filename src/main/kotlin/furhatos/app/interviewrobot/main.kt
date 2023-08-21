@@ -18,8 +18,10 @@ fun main(args: Array<String>) {
     val recorder = FurhatAudioFeedRecorder(streamer)
 
     /** Choose one of them to record audio in, out or both */
-    recorder.startRecordAll(File("recording.wav"))
-    //recorder.startRecordSeparate(audioInFile = File("audioIn.wav"), audioOutFile = File("audioOut.wav"))
+    //recorder.startRecordAll(File("recording.wav"))
+    recorder.startRecordSeparate(audioInFile = File("audioIn.wav"), audioOutFile = File("audioOut.wav"))
     Skill.main(args)
-    streamer.stop()
+
+
+    //streamer.stop()
 }

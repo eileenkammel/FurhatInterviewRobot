@@ -18,9 +18,6 @@ val AnalyzeInterest: State = state(Interaction) {
             "job interview" -> {
                 goto(AskAboutInterview)
             }
-            "job interviews" -> {
-                goto(AskAboutInterview)
-            }
             "interviews" -> {
                 goto(AskAboutInterview)
             }
@@ -70,8 +67,8 @@ val AskAboutCV: State = state(Interaction) {
         users.current.cv.adjoin(it.intent)
         randomizeClarificationRequest()
         goto(CheckCvProfile)
-        }
     }
+}
 
 
 val CheckCvProfile : State = state(Interaction) {
@@ -197,28 +194,7 @@ val AskAboutInterview: State = state(Interaction) {
     }
 }
 
-val RequestConfidence : State = state(Interaction) {
-    onEntry {
-        furhat.ask(requestInterviewExperience)
-    }
-    onResponse<TellInterviewConfidenceIntent> {
-        users.current.interview.confidence = it.intent.confidence
-        randomizeClarificationRequest()
-        goto(CheckInterviewProfile)
-    }
-}
 
-val RandomInterviewTalk : State = state(Interaction) {
-    onEntry {
-        furhat.ask{random{+"Tell me about your last job interview"
-            +"Tell me about your worst job interview experience"
-            +"Tell me about your best job interview experience"}}
-    }
-    onResponse {
-        furhat.say("Ah, I see. Thanks for sharing that.")
-        goto(GiveInterviewAdvice)
-    }
-}
 
 val GiveInterviewAdvice: State = state(Interaction) {
     onEntry {
@@ -232,7 +208,8 @@ val GiveInterviewAdvice: State = state(Interaction) {
             "preparation" -> furhat.say("Here is my advice on preparation.")
             "clothes" -> furhat.say("Here is my advice on clothes.")
             "questions" -> furhat.say("Here is my advice on questions.")
-        }
+        }}
+
 
     onResponse<doneWithInterviewAdvice> {
         furhat.say("Ah, I hope I was of some use.")
@@ -243,31 +220,7 @@ val GiveInterviewAdvice: State = state(Interaction) {
 }
 
 // TOPIC 3
-val AskAboutSkills: State = state(Interaction) {
-    onEntry {
-        furhat.ask(requestTechnicalSkills)
-    }
 
-    onReentry {
-        furhat.ask(elaborate)
-    }
-}
-
-val GiveSkillsAdvice: State = state(Interaction) {
-    onEntry {
-        furhat.ask("What kind of technical skill advice do you need?")
-    }
-
-    onResponse<RequestSkillsAdvice> {
-        users.current.skillsAdviceNeed.adjoin(it.intent)
-        when (users.current.skillsAdviceNeed.skillsAdviceNeed!!.value) {
-            "format" -> furhat.say("Here is my advice on format.")
-            "language" -> furhat.say("Here is my advice on languages.")
-        }
-
-        goto(AskIfMoreAdvice)
-    }
-}
 
 // ADVICE HANDLER
 val AskIfMoreAdvice: State = state(Interaction) {

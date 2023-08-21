@@ -1,6 +1,5 @@
 package furhatos.app.interviewrobot.nlu
 
-import com.sun.javafx.fxml.expression.Expression.not
 import furhatos.app.interviewrobot.*
 import furhatos.flow.kotlin.*
 import furhatos.nlu.TextGenerator
@@ -90,23 +89,6 @@ open class TellCVIntent : Intent(), TextGenerator {
 }
 
 
-class InterviewIntent : Intent(), TextGenerator {
-    var talked_preparation: Boolean? = false
-    var talked_content: Boolean? = false
-    var talked_test: Boolean? = false
-
-    class TellDegreeIntent : Intent() {
-    var degree: Degree? = null
-    override fun getExamples(lang: Language): List<String> {
-        return listOf(
-            "@degree",
-            "I have a @degree",
-            "I have a @degree degree"
-        )
-    }
-
-}
-
 class TellPositionsIntent : Intent() {
     var formerPositions: Number? = null
     override fun getExamples(lang: Language): List<String> {
@@ -134,15 +116,13 @@ class TellExperienceIntent : Intent() {
     }
 }
 
-class TellInterviewIntent : Intent(), TextGenerator {
-    var confidence: InterviewConfidence? = null
+class InterviewIntent : Intent(), TextGenerator {
+    var talked_preparation: Boolean? = false
+    var talked_content: Boolean? = false
+    var talked_test: Boolean? = false
     override fun getExamples(lang: Language): List<String> {
         return listOf(
-            "@confidence",
-            "I am @confidence",
-            "I am @confidence during job interviews",
-            "I feel @confidence",
-            "I feel @confidence during job interviews"
+            "@confidence"
         )
     }
 
@@ -198,6 +178,22 @@ class requestInterviewPreparationAdvice : Intent(), TextGenerator {
         return toText()
     }
 }
+
+
+
+class TellDegreeIntent : Intent() {
+    var degree: Degree? = null
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "@degree",
+            "I have a @degree",
+            "I have a @degree degree"
+        )
+    }
+
+}
+
+
 class requestInterviewContentAdvice : Intent(), TextGenerator {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
