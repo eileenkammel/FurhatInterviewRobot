@@ -18,8 +18,9 @@ val Greeting: State = state(Interaction) {
     onResponse<ChooseTopicIntent> {
         randomizeClarificationRequest()
         furhat.say("Alright!")
-        users.current.topic.adjoin(it.intent)
-        goto(AnalyzeInterest)
+        goto(End)
+        //users.current.topic.adjoin(it.intent)
+        //goto(AnalyzeInterest)
     }
 
     onResponse<RequestTopicOptionsIntent> {
