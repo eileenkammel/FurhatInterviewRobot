@@ -10,10 +10,12 @@ class ChooseTopicIntent : Intent() {
 
     override fun getExamples(lang: Language): List<String> {
         return listOf(
+            "@currentTopic",
             "I would like to talk about @currentTopic",
             "I want to talk about @currentTopic",
+            "I want to talk about my @currentTopic",
             "I'd like to know more about @currentTopic",
-            "Can you help me with @currentTopic",
+            "Can you help me with my @currentTopic",
             "I would like to have some advice on @currentTopic"
         )
     }
@@ -111,6 +113,7 @@ class TellExperienceIntent : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "@yrsOfExperience",
+            "@yrsOfExperience years",
             "I have worked for @yrsOfExperience years",
             "I have @yrsOfExperience years of experience",
             "I have @yrsOfExperience years of work experience",

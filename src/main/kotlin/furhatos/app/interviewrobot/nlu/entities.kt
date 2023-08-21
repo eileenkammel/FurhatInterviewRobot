@@ -5,7 +5,7 @@ import furhatos.util.Language
 
 class Topic : EnumEntity(speechRecPhrases = true) {
     override fun getEnum(lang: Language): List<String> {
-        return listOf("cv", "job interview", "job interviews", "technical skills")
+        return listOf("cv:cv,resume,tv,cd,seat,curriculum,sea weed", "job interview:job interview,job interviews", "technical skills:technical skills,skills")
     }
 }
 
