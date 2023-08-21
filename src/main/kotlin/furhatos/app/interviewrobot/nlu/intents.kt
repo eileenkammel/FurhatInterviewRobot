@@ -1,5 +1,8 @@
 package furhatos.app.interviewrobot.nlu
 
+import com.sun.javafx.fxml.expression.Expression.not
+import furhatos.app.interviewrobot.*
+import furhatos.flow.kotlin.*
 import furhatos.nlu.TextGenerator
 import furhatos.nlu.*
 import furhatos.nlu.common.Number
@@ -10,10 +13,15 @@ class ChooseTopicIntent : Intent() {
 
     override fun getExamples(lang: Language): List<String> {
         return listOf(
+            "@currentTopic",
+            "about @currentTopic",
             "I would like to talk about @currentTopic",
             "I want to talk about @currentTopic",
             "I'd like to know more about @currentTopic",
             "Can you help me with @currentTopic",
+            "let's talk about @currentTopic",
+            "can you advice me on @currentTopic",
+            "I want advice on @currentTopic",
             "I would like to have some advice on @currentTopic"
         )
     }
@@ -80,6 +88,12 @@ open class TellCVIntent : Intent(), TextGenerator {
     }
 }
 
+<<<<<<< HEAD
+class InterviewIntent : Intent(), TextGenerator {
+    var talked_preparation: Boolean? = false
+    var talked_content: Boolean? = false
+    var talked_test: Boolean? = false
+=======
 class TellDegreeIntent : Intent() {
     var degree: Degree? = null
     override fun getExamples(lang: Language): List<String> {
@@ -120,6 +134,7 @@ class TellExperienceIntent : Intent() {
 
 class TellInterviewIntent : Intent(), TextGenerator {
     var confidence: InterviewConfidence? = null
+>>>>>>> origin/main
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "@confidence",
@@ -131,7 +146,13 @@ class TellInterviewIntent : Intent(), TextGenerator {
     }
 
     override fun toText(lang: Language): String {
-        return generate(lang, "[I see, you are $confidence during job interviews.]")
+        var topics = mutableListOf("")
+        topics.removeAt(0)
+        if(talked_test!!) topics.add("the technical test")
+        if(talked_content!!) topics.add("the questions")
+        if(talked_preparation!!) topics.add("the preparation")
+        if(topics.size==0) return generate(lang,"[Oh, I guess you didnt need advice after all]")
+        return generate(lang, "[I hope I was of some help regarding $topics.]")
     }
 
     override fun toString(): String {
@@ -139,6 +160,116 @@ class TellInterviewIntent : Intent(), TextGenerator {
     }
 }
 
+<<<<<<< HEAD
+class doneWithInterviewAdvice : Intent(){
+
+    override fun getExamples(lang: Language): List<String> {
+        return listOf("I'm done",
+            "I think I'm done",
+            "I don't want any more advice",
+            "I think we're done",
+            "That's all",
+            "No,That's all",
+            "No, Im good")
+    }
+}
+
+class requestInterviewPreparationAdvice : Intent(), TextGenerator {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "preparation",
+            "How do I prepare for an interview?",
+            "What do you mean by preparation?",
+            "Lets talk about preparation.",
+            "How do I prepare ?",
+            "What do I do before?",
+            "What do I do before an interview?"
+
+        )
+    }
+
+    override fun toText(lang: Language): String {
+        return generate(lang, "[You should rehearse a bit how you will put together what the job position and your CV say,," +
+                "You will probably be discussing both during the interview, so it's a good idea to be able to relate them well." +
+                "]")
+    }
+
+    override fun toString(): String {
+        return toText()
+    }
+}
+class requestInterviewContentAdvice : Intent(), TextGenerator {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "interview questions",
+            "What questions should I ask?",
+            "What is your advice on what to talk?",
+            "Explain more on interview questions.",
+            "what do you mean interview questions?",
+            "Lets talk about the interview questions."
+        )
+    }
+
+    override fun toText(lang: Language): String {
+        return generate(lang, "[You can relax a bit there, since probably the interviewer will lead the conversation. " +
+                "Still, you should keep in mind to show interest by asking questions more related to the position or company." +
+                " ]")
+    }
+
+    override fun toString(): String {
+        return toText()
+    }
+}
+
+
+class requestInterviewTestAdvice : Intent(), TextGenerator {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "test","technical test",
+            "How do I prepare for a technical test?",
+            "could you advice me on the technical test?",
+            "what should I do regarding a  technical test?",
+            "let's talk about the technical test"
+
+        )
+    }
+
+    override fun toText(lang: Language): String {
+        return generate(lang, "[Regarding technical tests, the focus is more to show how you tackle the problem in front" +
+                "of you rather than solving it completely. Because of that while you're doing the test you should explain your" +
+                " reasoning; it is also okay to pay less attention to the interviewer since the problem is the focus.]")
+    }
+
+    override fun toString(): String {
+        return toText()
+    }
+}
+
+
+class requestInterviewOptionsAdvice : Intent(), TextGenerator {
+    override fun getExamples(lang: Language): List<String> {
+        return listOf(
+            "what were my options",
+            "what are my options",
+            "what could you advice me on",
+            "could you repeat your options",
+            "options"
+            )
+    }
+
+    override fun toText(lang: Language): String {
+        return generate(lang, "[We can go over the preparation, the questions and the test.]")
+    }
+
+    override fun toString(): String {
+        return toText()
+    }
+}
+
+
+
+
+=======
 class TellInterviewConfidenceIntent : Intent() {
     var confidence: InterviewConfidence? = null
     override fun getExamples(lang: Language): List<String> {
@@ -149,6 +280,7 @@ class TellInterviewConfidenceIntent : Intent() {
             "I feel @confidence during job interviews")
     }
 }
+>>>>>>> origin/main
 class TellSkillIntent : Intent(), TextGenerator {
     var skill: Skill? = null
     override fun getExamples(lang: Language): List<String> {
@@ -172,6 +304,11 @@ class RequestCVAdvice : Intent() {
     var cvAdviceNeed: CVAdviceNeed? = null
 
     override fun getExamples(lang: Language): List<String> {
+<<<<<<< HEAD
+        return listOf(
+            "I need advice on @adviceNeed",
+            "@adviceNeed")
+=======
         return listOf("I need advice on @cvAdviceNeed", "@cvAdviceNeed",
             "I want to know @CvAdviceNeed")
     }
@@ -190,5 +327,6 @@ class RequestSkillsAdvice : Intent() {
 
     override fun getExamples(lang: Language): List<String> {
         return listOf("I need advice on @skillsAdviceNeed", "skillsAdviceNeed")
+>>>>>>> origin/main
     }
 }

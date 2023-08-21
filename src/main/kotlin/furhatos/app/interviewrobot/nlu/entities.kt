@@ -5,7 +5,7 @@ import furhatos.util.Language
 
 class Topic : EnumEntity(speechRecPhrases = true) {
     override fun getEnum(lang: Language): List<String> {
-        return listOf("cv", "job interview", "job interviews", "technical skills")
+        return listOf("cv", "job interview", "job interviews", "interviews")
     }
 }
 
@@ -32,6 +32,10 @@ class CVAdviceNeed : EnumEntity(speechRecPhrases = true) {
         return listOf(
             "contents:cv contents,contents of a cv,what to put in a cv,how to write a cv",
             "cv with no experience:how to write a cv if I have no experience,how to write a cv for the first job",
+<<<<<<< HEAD
+            "structure:how to structure a cv,what's a good structure for a cv, structure",
+            "personal interests:what are good personal interest to mention in a cv, should I mention personal interests")
+=======
             "structure:how to structure a cv,what's a good structure for a cv",
             "personal interests:what are good personal interest to mention in a cv, should I mention personal interests"
         )
@@ -55,5 +59,6 @@ class SkillsAdviceNeed : EnumEntity(speechRecPhrases = true) {
             "format:how should I format my skills, how should I talk about my skills",
             "language:should I list this language, should I put this language"
         )
+>>>>>>> origin/main
     }
 }
