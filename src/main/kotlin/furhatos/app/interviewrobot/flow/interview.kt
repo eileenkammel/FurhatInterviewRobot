@@ -192,24 +192,6 @@ val AskAboutInterview: State = state(Interaction) {
         users.current.interview.talked_test= true
         reentry()
     }
-}
-
-
-
-val GiveInterviewAdvice: State = state(Interaction) {
-    onEntry {
-        furhat.ask("What kind of interview advice do you need?")
-    }
-
-    onResponse<RequestInterviewAdvice> {
-        users.current.interviewAdviceNeed.adjoin(it.intent)
-        when (users.current.interviewAdviceNeed.interviewAdviceNeed!!.value) {
-            "nervous" -> furhat.say("Here is my advice on nervousness.")
-            "preparation" -> furhat.say("Here is my advice on preparation.")
-            "clothes" -> furhat.say("Here is my advice on clothes.")
-            "questions" -> furhat.say("Here is my advice on questions.")
-        }}
-
 
     onResponse<doneWithInterviewAdvice> {
         furhat.say("Ah, I hope I was of some use.")
@@ -218,6 +200,8 @@ val GiveInterviewAdvice: State = state(Interaction) {
 
 
 }
+
+
 
 // TOPIC 3
 
