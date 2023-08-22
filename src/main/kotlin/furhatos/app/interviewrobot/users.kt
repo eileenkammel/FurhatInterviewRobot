@@ -22,15 +22,3 @@ val User.cvAdviceNeed by NullSafeUserDataDelegate{
 val User.interview by NullSafeUserDataDelegate {
     InterviewIntent()
 }
-
-val User.interviewAdviceNeed by NullSafeUserDataDelegate{
-    RequestInterviewAdvice()
-}
-
-val User.skills by NullSafeUserDataDelegate {
-    TellSkillIntent()
-}
-
-val User.skillsAdviceNeed by NullSafeUserDataDelegate{
-    RequestSkillsAdvice()
-}

@@ -45,12 +45,6 @@ val requestYrsOfExperience = utterance {
     +"How many years of experience do you have in your field? ?"
 }
 
-
-val introInterview2 = utterance {
-    +"I had in mind talking about "
-    +"  "
-}
-
 val askCVQuestion = utterance {
     random{
         +"What are your concerns when it comes to writing a CV?"
@@ -82,25 +76,6 @@ val interviewAdviceIntro = utterance {
     +"What sort of advice around interviews were you looking for?"
     +"I can advise you on the following topics: preparation, interview questions, and technical skills."
     +"Which one sounds interesting to you?"
-}
-
-val requestInterviewExperience = utterance {
-    +"Tell me about your experience with job interviews and what exactly you need help with."
-}
-
-val askInterviewQuestion = utterance {
-    +"Tell me about your last job interview"
-    +"Tell me about your worst job interview experience"
-    +"Tell me about your best job interview experience"
-}
-
-val requestTechnicalSkills = utterance {
-    +"Tell me about your technical skills."
-    +"For example, are you proficient in any programming languages?"
-}
-
-val elaborate = utterance {
-    +"Can you elaborate some more on that?"
 }
 
 val repeat = utterance {
