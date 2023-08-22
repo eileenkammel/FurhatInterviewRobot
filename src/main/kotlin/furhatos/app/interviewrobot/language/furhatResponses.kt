@@ -16,7 +16,7 @@ val topicNotFound = utterance {
 }
 
 val giveTopicOptions = utterance {
-    +"I would be happy to talk with you about ${Topic().getEnum(Language.ENGLISH_US).joinToString(", ")}"
+    +"I would be happy to talk with you about résumés ,or interviews."
     +"Do any of those topics interest you?"
 }
 
@@ -49,6 +49,32 @@ val askCVQuestion = utterance {
     random{
         +"What are your concerns when it comes to writing a CV?"
         +"How many CVs have you written so far?"
+    }
+}
+val askInterviewPreparationQuestion = utterance {
+    random{
+        +"What do you think about when preparing for an interview?"
+        +"Do you know what you should look at prior before the interview?"
+        +"What do you think you would look at before it?"
+        +"How do you personally prepare for an interview?"
+    }
+}
+
+val askInterviewContentQuestion = utterance {
+    random{
+        +"Do you have any expectations regarding the questions during an interview?"
+        +"How important is it to anticipate your questions?"
+        +"Do you know what should you be asking during an interview?"
+        +"Do you have any favorite questions that you always do regardless of the position?"
+    }
+}
+
+val askInterviewTestQuestion = utterance {
+    random{
+        +"Have you had to do any technical test on an interview?"
+        +"What makes you expect a test in an interview?"
+        +"What do you think you should focus on for the interview test?"
+        +"How much do you expect a technical test to affect the employer hiring you?"
     }
 }
 
