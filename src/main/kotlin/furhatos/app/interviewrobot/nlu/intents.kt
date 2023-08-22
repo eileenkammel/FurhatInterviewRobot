@@ -16,13 +16,16 @@ class ChooseTopicIntent : Intent() {
             "about @currentTopic",
             "I would like to talk about @currentTopic",
             "I want to talk about @currentTopic",
+            "I want to talk about my @currentTopic",
             "I'd like to know more about @currentTopic",
             "Can you help me with @currentTopic",
             "let's talk about @currentTopic",
             "can you advice me on @currentTopic",
             "I want advice on @currentTopic",
             "Can you help me with my @currentTopic",
-            "I would like to have some advice on @currentTopic"
+            "I would like to have some advice on @currentTopic",
+            "I need help with @currentTopic",
+            "I need help with my @currentTopic"
         )
     }
 }

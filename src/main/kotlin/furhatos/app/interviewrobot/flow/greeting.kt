@@ -11,16 +11,15 @@ import furhatos.nlu.common.No
 
 val Greeting: State = state(Interaction) {
     onEntry {
-        dialogLogger.startSession(cloudToken = "f8b663ad-e9bb-44f8-8e57-1a146ad336a2") // logs dialog and records user speech
+        dialogLogger.startSession() // logs dialog and records user speech
         furhat.ask(greet)
     }
 
     onResponse<ChooseTopicIntent> {
         randomizeClarificationRequest()
         furhat.say("Alright!")
-        goto(End)
-        //users.current.topic.adjoin(it.intent)
-        //goto(AnalyzeInterest)
+        users.current.topic.adjoin(it.intent)
+        goto(AnalyzeInterest)
     }
 
     onResponse<RequestTopicOptionsIntent> {

@@ -28,6 +28,11 @@ val Interaction: State = state {
         goto(AnalyzeInterest)
     }
 
+    onResponse("Stop"){
+        furhat.say("Okay, we stop the conversation.")
+        goto(End)
+    }
+
     onResponse {
         nomatches++
         when (nomatches) {
