@@ -1,11 +1,13 @@
-package furhatos.demo.audiofeed
+package furhatos.app.interviewrobot.audiofeed
 
+import furhatos.demo.audiofeed.FurhatAudioFeedStreamer
 import furhatos.demo.utils.removeLeftChannel
 import furhatos.demo.utils.removeRightChannel
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.SourceDataLine
 
-class FurhatAudioFeedPlayback(private val audioStreamer: FurhatAudioFeedStreamer): FurhatAudioFeedStreamer.AudioStreamingListener {
+class FurhatAudioFeedPlayback(private val audioStreamer: FurhatAudioFeedStreamer):
+    FurhatAudioFeedStreamer.AudioStreamingListener {
 
     private var sourceDataLine: SourceDataLine? = null
 

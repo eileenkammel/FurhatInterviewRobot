@@ -11,7 +11,7 @@ import furhatos.nlu.common.No
 
 val Greeting: State = state(Interaction) {
     onEntry {
-        dialogLogger.startSession() // logs dialog and records user speech
+        dialogLogger.startSession(cloudToken = "f8b663ad-e9bb-44f8-8e57-1a146ad336a2") // logs dialog and records user speech
         furhat.ask(greet)
     }
 

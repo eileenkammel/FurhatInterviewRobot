@@ -1,11 +1,13 @@
-package furhatos.demo.audiofeed
+package furhatos.app.interviewrobot.audiofeed
 
+import furhatos.demo.audiofeed.FurhatAudioFeedStreamer
 import furhatos.demo.utils.WavFileWriter
 import furhatos.demo.utils.removeLeftChannel
 import furhatos.demo.utils.removeRightChannel
 import java.io.File
 
-class FurhatAudioFeedRecorder(private val audioStreamer: FurhatAudioFeedStreamer): FurhatAudioFeedStreamer.AudioStreamingListener {
+class FurhatAudioFeedRecorder(private val audioStreamer: FurhatAudioFeedStreamer):
+    FurhatAudioFeedStreamer.AudioStreamingListener {
 
     private val audioRecorder = WavFileWriter()
 

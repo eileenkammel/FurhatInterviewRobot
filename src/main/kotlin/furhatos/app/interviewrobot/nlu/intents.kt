@@ -147,13 +147,13 @@ class InterviewIntent : Intent(), TextGenerator {
 class doneWithInterviewAdvice : Intent(){
 
     override fun getExamples(lang: Language): List<String> {
-        return listOf("I'm done",
-            "I think I'm done",
+        return listOf("I am done",
+            "I think I am done",
             "I don't want any more advice",
-            "I think we're done",
-            "That's all",
-            "No,That's all",
-            "No, Im good")
+            "I think we are done",
+            "That is all",
+            "No,That is all",
+            "No, I am good")
     }
 }
 
