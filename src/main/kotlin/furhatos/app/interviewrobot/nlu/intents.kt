@@ -121,11 +121,6 @@ class InterviewIntent : Intent(), TextGenerator {
     var talkedPreparation: Boolean? = false
     var talkedContent: Boolean? = false
     var talkedTest: Boolean? = false
-    override fun getExamples(lang: Language): List<String> {
-        return listOf(
-            "@confidence"
-        )
-    }
 
     override fun toText(lang: Language): String {
         val topics = mutableListOf("")
@@ -182,8 +177,6 @@ class RequestInterviewPreparationAdvice : Intent(), TextGenerator {
     }
 }
 
-
-
 class TellDegreeIntent : Intent() {
     var degree: Degree? = null
     override fun getExamples(lang: Language): List<String> {
@@ -195,7 +188,6 @@ class TellDegreeIntent : Intent() {
     }
 
 }
-
 
 class RequestInterviewContentAdvice : Intent(), TextGenerator {
     override fun getExamples(lang: Language): List<String> {

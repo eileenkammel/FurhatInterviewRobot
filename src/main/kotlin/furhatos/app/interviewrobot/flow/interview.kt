@@ -145,7 +145,6 @@ val AskAboutInterview: State = state(Interaction) {
     }
 
     onReentry {
-        furhat.say("${users.current.interview}")
         furhat.ask("Anything else you want to ask about interviews?")
     }
 
@@ -154,6 +153,7 @@ val AskAboutInterview: State = state(Interaction) {
         if (users.current.interview.talkedPreparation!!) furhat.say(repeat)
         furhat.say("${it.intent}")
         users.current.interview.talkedPreparation = true
+        furhat.say("${users.current.interview}")
         reentry()
     }
 
@@ -162,6 +162,7 @@ val AskAboutInterview: State = state(Interaction) {
         if (users.current.interview.talkedContent!!) furhat.say(repeat)
         furhat.say("${it.intent}")
         users.current.interview.talkedContent = true
+        furhat.say("${users.current.interview}")
         reentry()
     }
 
@@ -170,6 +171,7 @@ val AskAboutInterview: State = state(Interaction) {
         if (users.current.interview.talkedPreparation!!) furhat.say(repeat)
         furhat.say("${it.intent}")
         users.current.interview.talkedTest = true
+        furhat.say("${users.current.interview}")
         reentry()
     }
 
