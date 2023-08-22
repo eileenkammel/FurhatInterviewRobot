@@ -180,6 +180,7 @@ val AskAboutInterview: State = state(Interaction) {
     }
 
     onResponse<requestInterviewTestAdvice> {
+        if (users.current.interview.talked_preparation!!) furhat.say("Ah,, we were already over this")
         randomizeClarificationRequest()
         furhat.say("${it.intent}")
         users.current.interview.talked_test= true
@@ -189,13 +190,12 @@ val AskAboutInterview: State = state(Interaction) {
     onResponse<requestInterviewOptionsAdvice> {
         randomizeClarificationRequest()
         furhat.say("${it.intent}")
-        users.current.interview.talked_test= true
         reentry()
     }
 
     onResponse<doneWithInterviewAdvice> {
         furhat.say("Ah, I hope I was of some use.")
-        goto(End)
+        goto(AnalyzeInterest)
     }
 
 
