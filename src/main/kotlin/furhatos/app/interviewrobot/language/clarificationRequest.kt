@@ -32,7 +32,7 @@ val requestClarification: State = state {
 }
 
 fun FlowControlRunner.randomizeClarificationRequest() {
-    val probability = 0.15
+    val probability = 0.20
     val randomValue: Double = Random.nextDouble()
     if (randomValue <= probability) {
         call(requestClarification)
