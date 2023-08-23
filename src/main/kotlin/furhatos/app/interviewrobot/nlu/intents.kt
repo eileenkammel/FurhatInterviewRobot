@@ -273,7 +273,7 @@ class RequestInterviewAdviceOptions : Intent(), TextGenerator {
     }
 
     override fun toText(lang: Language): String {
-        return generate(lang, "[We can go over interview preparation, the questions and the technical test.]")
+        return generate(lang, "[We can go over interview preparation, the interview questions and the technical test.]")
     }
 
     override fun toString(): String {
