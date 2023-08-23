@@ -82,6 +82,10 @@ val cvAdviceIntro = utterance {
     +"What kind of advice about writing a CV were you looking for?"
 }
 
+val cvAdviceOptions = utterance {
+    +"I can give you advice on cv structure, contents, how to write the first cv and what personal interest to add to a cv."
+}
+
 val giveCVContentAdvice = utterance {
     +"A well crafted CV should at least contain the following key sections: 1. Your contact information, 2. Information about your education and degrees. 3. Your work experience. 4. Your technical skills and your soft skills. 5. your projects, achievements and awards. You can also add some personal interests if you'd like."
 }

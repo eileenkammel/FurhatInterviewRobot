@@ -288,7 +288,8 @@ class RequestCVAdvice : Intent() {
         return listOf(
             "@cvAdviceNeed",
             "I need advice on @cvAdviceNeed",
-            "I want to know about @cvAdviceNeed"
+            "I want to know about @cvAdviceNeed",
+            "I need help with @cvAdviceNeed"
         )
     }
 }

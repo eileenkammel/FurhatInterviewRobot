@@ -135,6 +135,10 @@ val GiveCVAdvice: State = state(Interaction) {
 
         goto(AskIfMoreAdvice)
     }
+    onResponse<RequestInterviewAdviceOptions> {
+        furhat.say(cvAdviceOptions)
+        reentry()
+    }
 }
 
 // TOPIC 2
