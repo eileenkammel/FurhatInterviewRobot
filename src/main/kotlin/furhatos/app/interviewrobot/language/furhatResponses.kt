@@ -46,11 +46,9 @@ val requestYrsOfExperience = utterance {
 }
 
 val askCVQuestion = utterance {
-    random{
         +"What are your concerns when it comes to writing a CV?"
-        +"How many CVs have you written so far?"
     }
-}
+
 val askInterviewPreparationQuestion = utterance {
     random{
         +"What do you think about when preparing for an interview?"
