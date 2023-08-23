@@ -28,3 +28,15 @@ class CVAdviceNeed : EnumEntity(speechRecPhrases = true) {
         )
     }
 }
+
+
+class SkillsAdviceNeed : EnumEntity(speechRecPhrases = true) {
+    override fun getEnum(lang: Language): List<String> {
+        return listOf(
+                "format:how should I format my skills, how should I talk about my skills",
+                "language:should I list this language, should I put this language"
+        )
+    }
+}
+
+
