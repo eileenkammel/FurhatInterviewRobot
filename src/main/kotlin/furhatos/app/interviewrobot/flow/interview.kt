@@ -169,6 +169,11 @@ val AskAboutInterview: State = state(Interaction) {
         goto(askInterviewTest)
     }
 
+    onResponse<Yes> {
+        furhat.say("[What next? We can go over interview preparation, the interview questions and technical tests.]")
+        reentry()
+    }
+
     onResponse<RequestInterviewAdviceOptions> {
         randomizeClarificationRequest()
         furhat.say("${it.intent}")

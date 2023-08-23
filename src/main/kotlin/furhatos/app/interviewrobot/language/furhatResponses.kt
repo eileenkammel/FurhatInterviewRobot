@@ -52,8 +52,7 @@ val askCVQuestion = utterance {
 val askInterviewPreparationQuestion = utterance {
     random{
         +"What do you think about when preparing for an interview?"
-        +"Do you know what you should look at prior before the interview?"
-        +"What do you think you would look at before it?"
+        +"Do you know what you should look at before the interview?"
         +"How do you personally prepare for an interview?"
     }
 }
@@ -61,18 +60,18 @@ val askInterviewPreparationQuestion = utterance {
 val askInterviewContentQuestion = utterance {
     random{
         +"Do you have any expectations regarding the questions during an interview?"
-        +"How important is it to anticipate your questions?"
-        +"Do you know what should you be asking during an interview?"
-        +"Do you have any favorite questions that you always do regardless of the position?"
+        +"What questions do you fear the most?"
+        +"what questions do you plan to ask during an interview?"
+        +"What is your favorite question to ask for an interview?"
+
     }
 }
 
 val askInterviewTestQuestion = utterance {
     random{
-        +"Have you had to do any technical test on an interview?"
-        +"What makes you expect a test in an interview?"
+        +"What kind of technical test have you done on an interview?"
+        +"What do you expect as a test in an interview?"
         +"What do you think you should focus on for the interview test?"
-        +"How much do you expect a technical test to affect the employer hiring you?"
     }
 }
 
