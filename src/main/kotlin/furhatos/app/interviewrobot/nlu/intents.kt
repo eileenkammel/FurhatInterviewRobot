@@ -32,6 +32,7 @@ class RequestTopicOptionsIntent : Intent() {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "What can we talk about?",
+            "What are my options?",
             "What can you talk about?",
             "What do you know about?",
             "What topics do you have?",
@@ -127,9 +128,9 @@ class InterviewIntent : Intent(), TextGenerator {
         topics.removeAt(0)
         if(talkedPreparation!!) topics.add("how to prepare")
         if(talkedContent!!) topics.add("interview questions")
-        if(talkedTest!!) topics.add("the technical skills test")
+        if(talkedTest!!) topics.add("technical test")
         if(topics.size==0) return generate(lang,"[Oh, I guess you didn't need advice after all]")
-        return generate(lang, "[I hope I was of some help regarding $topics.]")
+        return generate(lang, "[I hope I was of some help regarding ${topics.joinToString ( separator = " and "){it -> it }}.]")
     }
 
     override fun toString(): String {
@@ -140,7 +141,9 @@ class InterviewIntent : Intent(), TextGenerator {
 class DoneWithInterviewAdvice : Intent(){
 
     override fun getExamples(lang: Language): List<String> {
-        return listOf("I am done",
+        return listOf("No",
+            "Nope",
+            "I am done",
             "I think I am done",
             "I don't want any more advice",
             "I think we are done",
@@ -193,11 +196,13 @@ class RequestInterviewContentAdvice : Intent(), TextGenerator {
     override fun getExamples(lang: Language): List<String> {
         return listOf(
             "Interview questions",
+            "tell me about the questions",
             "What questions should I ask?",
             "What should I talk about?",
             "What is your advice on what to talk about?",
             "Explain more about interview questions.",
             "What do you mean interview questions?",
+            "Let's talk about the questions.",
             "Let's talk about the interview questions."
         )
     }
@@ -268,7 +273,7 @@ class RequestInterviewAdviceOptions : Intent(), TextGenerator {
     }
 
     override fun toText(lang: Language): String {
-        return generate(lang, "[We can go over interview preparation, the questions and the technical test.]")
+        return generate(lang, "[We can go over interview preparation, the interview questions and the technical test.]")
     }
 
     override fun toString(): String {
@@ -283,7 +288,8 @@ class RequestCVAdvice : Intent() {
         return listOf(
             "@cvAdviceNeed",
             "I need advice on @cvAdviceNeed",
-            "I want to know about @cvAdviceNeed"
+            "I want to know about @cvAdviceNeed",
+            "I need help with @cvAdviceNeed"
         )
     }
 }

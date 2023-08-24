@@ -16,7 +16,7 @@ val topicNotFound = utterance {
 }
 
 val giveTopicOptions = utterance {
-    +"I would be happy to talk with you about ${Topic().getEnum(Language.ENGLISH_US).joinToString(", ")}"
+    +"I would be happy to talk with you about résumés ,or interviews."
     +"Do any of those topics interest you?"
 }
 
@@ -46,14 +46,41 @@ val requestYrsOfExperience = utterance {
 }
 
 val askCVQuestion = utterance {
-    random{
         +"What are your concerns when it comes to writing a CV?"
-        +"How many CVs have you written so far?"
+    }
+
+val askInterviewPreparationQuestion = utterance {
+    random{
+        +"What do you think about when preparing for an interview?"
+        +"Do you know what you should look at before the interview?"
+        +"How do you personally prepare for an interview?"
+    }
+}
+
+val askInterviewContentQuestion = utterance {
+    random{
+        +"Do you have any expectations regarding the questions during an interview?"
+        +"What questions do you fear the most?"
+        +"what questions do you plan to ask during an interview?"
+        +"What is your favorite question to ask for an interview?"
+
+    }
+}
+
+val askInterviewTestQuestion = utterance {
+    random{
+        +"What kind of technical test have you done on an interview?"
+        +"What do you expect as a test in an interview?"
+        +"What do you think you should focus on for the interview test?"
     }
 }
 
 val cvAdviceIntro = utterance {
     +"What kind of advice about writing a CV were you looking for?"
+}
+
+val cvAdviceOptions = utterance {
+    +"I can give you advice on cv structure, contents, how to write the first cv and what personal interest to add to a cv."
 }
 
 val giveCVContentAdvice = utterance {

@@ -13,7 +13,6 @@ val AnalyzeInterest: State = state(Interaction) {
         when (users.current.topic.currentTopic!!.value) {
             "cv" -> goto(AskAboutCV)
             "job interview" -> goto(AskAboutInterview)
-            "interviews" -> goto(AskAboutInterview)
             else -> {
                 furhat.say(topicNotFound)
                 goto(RequestTopic)
@@ -136,12 +135,19 @@ val GiveCVAdvice: State = state(Interaction) {
 
         goto(AskIfMoreAdvice)
     }
+    onResponse<RequestInterviewAdviceOptions> {
+        furhat.say(cvAdviceOptions)
+        reentry()
+    }
 }
 
 // TOPIC 2
 val AskAboutInterview: State = state(Interaction) {
     onEntry {
-        furhat.ask(interviewAdviceIntro)
+        if( users.current.interview.talkedTest!!) furhat.ask("Anything else you want to ask about interviews?")
+        else if( users.current.interview.talkedContent!!) furhat.ask("Anything else you want to ask about interviews?")
+        else if( users.current.interview.talkedPreparation!!) furhat.ask("Anything else you want to ask about interviews?")
+        else furhat.ask(interviewAdviceIntro)
     }
 
     onReentry {
@@ -150,28 +156,21 @@ val AskAboutInterview: State = state(Interaction) {
 
     onResponse<RequestInterviewPreparationAdvice> {
         randomizeClarificationRequest()
-        if (users.current.interview.talkedPreparation!!) furhat.say(repeat)
-        furhat.say("${it.intent}")
-        users.current.interview.talkedPreparation = true
-        furhat.say("${users.current.interview}")
-        reentry()
+        goto(askInterviewPreparation)
     }
 
     onResponse<RequestInterviewContentAdvice> {
         randomizeClarificationRequest()
-        if (users.current.interview.talkedContent!!) furhat.say(repeat)
-        furhat.say("${it.intent}")
-        users.current.interview.talkedContent = true
-        furhat.say("${users.current.interview}")
-        reentry()
+        goto(askInterviewContent)
     }
 
     onResponse<RequestInterviewTestAdvice> {
         randomizeClarificationRequest()
-        if (users.current.interview.talkedPreparation!!) furhat.say(repeat)
-        furhat.say("${it.intent}")
-        users.current.interview.talkedTest = true
-        furhat.say("${users.current.interview}")
+        goto(askInterviewTest)
+    }
+
+    onResponse<Yes> {
+        furhat.say("[What next? We can go over interview preparation, the interview questions and technical tests.]")
         reentry()
     }
 
@@ -184,6 +183,61 @@ val AskAboutInterview: State = state(Interaction) {
     onResponse<DoneWithInterviewAdvice> {
         furhat.say("Okay, I hope you found that useful.")
         goto(ChooseMoreOrEnd)
+    }
+
+    onResponse<No> {
+        furhat.say("Okay, I hope you found that useful.")
+        goto(ChooseMoreOrEnd)
+    }
+
+}
+
+val askInterviewPreparation: State = state(Interaction) {
+    onEntry {
+        if (users.current.interview.talkedPreparation!!) furhat.say(repeat)
+        furhat.ask(askInterviewPreparationQuestion)
+    }
+    onResponse {
+        furhat.say("Oh I see.")
+        furhat.say("[Before the interview, you should take some time to rehearse and think about what is necessary " +
+                "for the position you are interviewing for. Be able to relate relevant information on your CV, " +
+                "as you will likely be discussing it with the interviewer.]")
+        users.current.interview.talkedPreparation = true
+        furhat.say("${users.current.interview}")
+        goto(AskAboutInterview)
+    }
+}
+
+val askInterviewContent: State = state(Interaction) {
+    onEntry {
+        if (users.current.interview.talkedContent!!) furhat.say(repeat)
+        furhat.ask(askInterviewContentQuestion)
+    }
+    onResponse {
+        furhat.say("Oh I see.")
+        furhat.say("[You can relax a bit there, since the interviewer will probably lead the conversation. " +
+                "Still, you should keep in mind that it is a good idea to show interest by asking questions " +
+                "more related to the position or company.]")
+        users.current.interview.talkedContent = true
+        furhat.say("${users.current.interview}")
+        goto(AskAboutInterview)
+    }
+}
+
+val askInterviewTest: State = state(Interaction) {
+    onEntry {
+        if (users.current.interview.talkedTest!!) furhat.say(repeat)
+        furhat.ask(askInterviewTestQuestion)
+    }
+    onResponse {
+        furhat.say("Oh I see.")
+        furhat.say("[Regarding technical test, the point is more to show how you approach a problem, rather than " +
+                "solving it completely. With that in mind, you should explain your reasoning while you tackle " +
+                "the test. It is also okay to pay less attention to the interviewer, since your main focus " +
+                "should be on the task at hand.]")
+        users.current.interview.talkedTest = true
+        furhat.say("${users.current.interview}")
+        goto(AskAboutInterview)
     }
 }
 
